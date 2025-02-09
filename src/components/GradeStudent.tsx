@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
-import Input from '../wids/Input'
 import axios from 'axios';
 import InputInt from '../wids/InputInt';
+import url from '../Consts';
 
 const tep = "⚠️ Student Not Found !";
 
@@ -28,11 +28,11 @@ const GradeStudent:React.FC = () => {
     },[data])
 
      useEffect(()=>{
-        axios.get("http://localhost:5013/api/getname/"+id)
+        axios.get(url+"/getname/"+id)
             .then((res)=>{
                 console.log(res);
                 setName(res.data);
-                axios.get("http://localhost:5013/api/course/"+id)
+                axios.get(url+"/course/"+id)
                     .then((resp)=>{
                         console.log(resp.data["$values"]);
                         setData(resp.data["$values"]);
@@ -58,7 +58,7 @@ const GradeStudent:React.FC = () => {
             return;
         }
     
-        axios.post("http://localhost:5013/api/grade", {
+        axios.post(url+"/grade", {
             score: score,
             studentId: id,
             courseId: CourseId

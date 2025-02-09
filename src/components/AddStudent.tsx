@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Input from '../wids/Input'
 import axios from 'axios';
+import url from '../Consts';
 
 const AddStudent:React.FC = () => {
     const [name,setName] = useState<string>("");
@@ -9,7 +10,7 @@ const AddStudent:React.FC = () => {
         const n = name;
         console.log(name);
         setName("");
-        axios.post("http://localhost:5013/api/student",{
+        axios.post(url+"/student",{
             name : n
         })
         .then((res)=>{

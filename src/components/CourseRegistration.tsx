@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Input from '../wids/Input'
 import InputInt from '../wids/InputInt';
 import axios from 'axios';
+import url from '../Consts';
 
 const tep = "⚠️ Student Not Found !";
 
@@ -12,7 +13,7 @@ const CourseRegistration:React.FC = () => {
     const [msg,setMsg] = useState<string>("");
 
     useEffect(()=>{
-        axios.get("http://localhost:5013/api/getname/"+id)
+        axios.get(url+"/getname/"+id)
             .then((res)=>{
                 console.log(res);
                 setName(res.data);
@@ -25,7 +26,7 @@ const CourseRegistration:React.FC = () => {
 
     const handleSave = () => {
         if(name !== tep && CourseName !== ""){
-            axios.post("http://localhost:5013/api/course",{
+            axios.post(url+"/course",{
                 title: CourseName,
                 studentId: id
             })

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Student from '../wids/Student'
 import axios from 'axios'
+import url from '../Consts';
 
 
 interface course {
@@ -21,7 +22,7 @@ const SeeAllStudents:React.FC = () => {
         }
       }[]>();
     useEffect(()=>{
-        axios.get("http://localhost:5013/api/student")
+        axios.get(url+"/student")
         .then((Res)=>{
             console.log(Res.data["$values"]);
             setdata(Res.data["$values"]);

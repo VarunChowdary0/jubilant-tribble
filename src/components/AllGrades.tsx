@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Grade from '../wids/Grade';
 import axios from 'axios';
+import url from '../Consts';
 
 const AllGrades:React.FC = () => {
     const [data,setData] = useState<
@@ -14,7 +15,7 @@ const AllGrades:React.FC = () => {
         studentName: string
       }[]>();
       useEffect(()=>{
-        axios.get("http://localhost:5013/api/grade")
+        axios.get(url+"/grade")
         .then((res)=>{
             setData(res.data["$values"])
         })

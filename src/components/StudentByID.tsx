@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import Input from '../wids/Input'
 import axios from 'axios';
 import InputInt from '../wids/InputInt';
 import Student from '../wids/Student';
+import url from '../Consts';
 
 interface course {
     $id: number;
@@ -12,7 +12,7 @@ interface course {
     grade: null
 }
 
-const StudentByID = () => {
+const StudentByID:React.FC = () => {
     const [Id,setId] = useState<number>(0);
     const [msg,setMsg] = useState<string>("");
     const [data,setdata] = useState< {
@@ -25,7 +25,7 @@ const StudentByID = () => {
           }>();
     const handleSave = () =>{
         console.log(Id);
-        axios.get("http://localhost:5013/api/student/"+Id)
+        axios.get(url+"/student/"+Id)
         .then((res)=>{
             console.log(res); 
             console.log(res.data); 
